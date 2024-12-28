@@ -1,0 +1,10 @@
+/* styles/tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .watch-case-option {
+    @apply w-16 h-16 rounded-full transition-all;
+  }
+}
