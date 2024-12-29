@@ -1,19 +1,22 @@
 import React from 'react';
 
-const BandSelection = ({ onBandChange }) => {
-    return (
-        <div className="band-selection">
-            <h2>Select Band</h2>
-            <button onClick={() => onBandChange('Sport Band')}>Sport Band</button>
-            <button onClick={() => onBandChange('Sport Loop')}>Sport Loop</button>
-            <button onClick={() => onBandChange('Stainless Steel')}>Stainless Steel</button>
-            <button onClick={() => onBandChange('FineWoven')}>FineWoven</button>
-            <button onClick={() => onBandChange('Braided Solo Loop')}>Braided Solo Loop</button>
-            <button onClick={() => onBandChange('Solo Loop')}>Solo Loop</button>
-            <button onClick={() => onBandChange('Nike Sport Band')}>Nike Sport Band</button>
-            <button onClick={() => onBandChange('Nike Sport Loop')}>Nike Sport Loop</button>
-        </div>
-    );
+const BandSelection = ({ bands, selectedBand, onSelectBand }) => {
+  return (
+    <div className="band-selection">
+      <h3>Choose Your Band</h3>
+      <div className="band-options">
+        {bands.map((band) => (
+          <button
+            key={band.id}
+            onClick={() => onSelectBand(band)}
+            className={`band-item ${selectedBand === band ? 'selected' : ''}`}
+          >
+            <img src={band.imageUrl} alt={band.name} />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default BandSelection;

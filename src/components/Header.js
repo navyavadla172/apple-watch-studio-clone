@@ -1,11 +1,16 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Header = () => {
-    return (
-        <header>
-            <h1>Apple Watch Studio</h1>
-        </header>
-    );
+  return (
+    <header className="header">
+      <h1>
+        <Link href="/">
+          <a>Apple Watch Studio Clone</a>
+        </Link>
+      </h1>
+    </header>
+  );
 };
 
 export default Header;

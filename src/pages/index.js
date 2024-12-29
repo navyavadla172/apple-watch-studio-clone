@@ -1,10 +1,14 @@
-import React from 'react';
-import CustomizationPage from './customization';
+import Link from 'next/link';
 
-export default function Home() {
-    return (
-        <div>
-            <CustomizationPage />
-        </div>
-    );
-}
+const IndexPage = () => {
+  return (
+    <div className="home-page">
+      <h2>Welcome to the Apple Watch Studio Clone</h2>
+      <Link href="/watch-studio">
+        <a>Start Customizing</a>
+      </Link>
+    </div>
+  );
+};
+
+export default IndexPage;
