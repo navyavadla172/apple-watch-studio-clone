@@ -1,29 +1,40 @@
-// components/WatchPreview.js
-const WatchPreview = ({ watchColor, bandColor }) => {
-    return (
-      <div className="flex justify-center items-center">
-        <div
-          className={`w-64 h-64 rounded-lg border-4 border-gray-300 flex justify-center items-center ${
-            watchColor === 'space-gray'
-              ? 'bg-gray-800'
-              : watchColor === 'silver'
-              ? 'bg-silver-400'
-              : 'bg-yellow-500'
-          }`}
-        >
-          <div
-            className={`w-32 h-32 rounded-full ${
-              bandColor === 'black'
-                ? 'bg-black'
-                : bandColor === 'white'
-                ? 'bg-white'
-                : 'bg-blue-500'
-            }`}
-          ></div>
-        </div>
+// src/components/WatchPreview.js
+
+import React from 'react';
+
+const WatchPreview = ({ selectedCase, selectedBand, selectedFace }) => {
+  return (
+    <div className="watch-preview mt-6">
+      <div className="relative w-72 h-72 mx-auto">
+        {/* Watch Case */}
+        {selectedCase && (
+          <img 
+            src={`/images/${selectedCase}.png`} 
+            alt="Watch Case" 
+            className="absolute top-0 left-0 w-full h-full object-contain" 
+          />
+        )}
+        
+        {/* Watch Band */}
+        {selectedBand && (
+          <img 
+            src={`/images/${selectedBand}.png`} 
+            alt="Band" 
+            className="absolute top-0 left-0 w-full h-full object-contain" 
+          />
+        )}
+
+        {/* Watch Face */}
+        {selectedFace && (
+          <img 
+            src={`/images/${selectedFace}.png`} 
+            alt="Watch Face" 
+            className="absolute top-0 left-0 w-full h-full object-contain" 
+          />
+        )}
       </div>
-    );
-  };
-  
-  export default WatchPreview;
-  
+    </div>
+  );
+};
+
+export default WatchPreview;

@@ -1,3 +1,4 @@
+// src/components/Header.js
 import { useState } from 'react';
 import Image from 'next/image';
 
@@ -23,8 +24,18 @@ const Header = () => {
           </ul>
         </nav>
         {/* Hamburger Button for Mobile */}
-        <button className="md:hidden" onClick={toggleMenu}>
-          <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <button
+          className="md:hidden"
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+        >
+          <svg
+            className="w-6 h-6 text-gray-700"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>

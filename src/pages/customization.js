@@ -1,84 +1,201 @@
-import Header from '../components/Header';
+// pages/customization.js
 import { useState } from 'react';
+import cases from '../cases.json';  // Import the case data from the cases.json file
 
-const Customization = () => {
-  const [watchColor, setWatchColor] = useState('space-gray');
-  const [bandColor, setBandColor] = useState('black');
+const CustomizationPage = () => {
+  const [selectedCase, setSelectedCase] = useState(null);
+  const [selectedSize, setSelectedSize] = useState('42mm');  // Default size
+  const [selectedMaterial, setSelectedMaterial] = useState('Aluminum');
+  const [selectedBand, setSelectedBand] = useState('Sport Band');
+  const [selectedColor, setSelectedColor] = useState('Black');
 
-  const handleWatchColorChange = (color) => {
-    setWatchColor(color);
-  };
-
-  const handleBandColorChange = (color) => {
-    setBandColor(color);
+  // Function to get the image path based on the selected options
+  const getImagePath = (size, material, band, color, caseName) => {
+    return `/images/${size}/${material}/${band}/${color}/${caseName}-front.png`;  // Example for front view
   };
 
   return (
-    <div>
-      <Header />
-      <main className="p-6">
-        <div className="max-w-7xl mx-auto space-y-10">
-          {/* Customization Section */}
-          <section className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8">
-            {/* Watch Model Customization */}
-            <div className="flex-1">
-              <h2 className="text-2xl font-semibold mb-4">Customize Your Apple Watch</h2>
-              <div>
-                <h3 className="text-lg font-semibold">Select Watch Case Color</h3>
-                <div className="flex space-x-4 mt-2">
-                  <button
-                    onClick={() => handleWatchColorChange('space-gray')}
-                    className={`w-16 h-16 rounded-full ${watchColor === 'space-gray' ? 'ring-2 ring-gray-500' : ''} bg-gray-800`}
-                  ></button>
-                  <button
-                    onClick={() => handleWatchColorChange('silver')}
-                    className={`w-16 h-16 rounded-full ${watchColor === 'silver' ? 'ring-2 ring-gray-500' : ''} bg-silver-400`}
-                  ></button>
-                  <button
-                    onClick={() => handleWatchColorChange('gold')}
-                    className={`w-16 h-16 rounded-full ${watchColor === 'gold' ? 'ring-2 ring-gray-500' : ''} bg-yellow-500`}
-                  ></button>
-                </div>
-              </div>
-
-              {/* Watch Band Options */}
-              <div className="mt-6">
-                <h3 className="text-lg font-semibold">Select Band Color</h3>
-                <div className="flex space-x-4 mt-2">
-                  <button
-                    onClick={() => handleBandColorChange('black')}
-                    className={`w-16 h-16 rounded-full ${bandColor === 'black' ? 'ring-2 ring-gray-500' : ''} bg-black`}
-                  ></button>
-                  <button
-                    onClick={() => handleBandColorChange('white')}
-                    className={`w-16 h-16 rounded-full ${bandColor === 'white' ? 'ring-2 ring-gray-500' : ''} bg-white`}
-                  ></button>
-                  <button
-                    onClick={() => handleBandColorChange('blue')}
-                    className={`w-16 h-16 rounded-full ${bandColor === 'blue' ? 'ring-2 ring-gray-500' : ''} bg-blue-500`}
-                  ></button>
-                </div>
-              </div>
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto py-10 px-4">
+        <div className="lg:grid lg:grid-cols-2 gap-10">
+          {/* Left: Watch Display */}
+          <div className="flex justify-center items-center">
+            <div className="relative">
+              {/* Display Watch Image */}
+              <img
+                src={getImagePath(
+                  selectedSize,
+                  selectedMaterial,
+                  selectedBand,
+                  selectedColor,
+                  selectedCase?.name  // Dynamically use the selected case name
+                )}
+                alt="Apple Watch"
+                className="max-w-xs lg:max-w-md"
+              />
             </div>
+          </div>
 
-            {/* Apple Watch Preview */}
-            <div className="flex-1">
-              <h3 className="text-lg font-semibold">Preview Your Apple Watch</h3>
-              <div className="flex justify-center items-center">
-                <div
-                  className={`w-64 h-64 rounded-lg border-4 border-gray-300 flex justify-center items-center ${
-                    watchColor === 'space-gray' ? 'bg-gray-800' : watchColor === 'silver' ? 'bg-silver-400' : 'bg-yellow-500'
+          {/* Right: Customization Options */}
+          <div className="bg-white p-8 rounded-lg shadow-md">
+            <h2 className="text-2xl font-semibold mb-4">Customize Your Apple Watch</h2>
+
+            {/* Size Selection */}
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-2">Select Size</h3>
+              <div className="flex space-x-4">
+                <button
+                  className={`p-3 rounded-lg border-2 ${
+                    selectedSize === '42mm' ? 'bg-blue-500 text-white' : 'bg-gray-100'
                   }`}
+                  onClick={() => setSelectedSize('42mm')}
                 >
-                  <div className={`w-32 h-32 rounded-full ${bandColor === 'black' ? 'bg-black' : bandColor === 'white' ? 'bg-white' : 'bg-blue-500'}`}></div>
-                </div>
+                  42mm
+                </button>
+                <button
+                  className={`p-3 rounded-lg border-2 ${
+                    selectedSize === '46mm' ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                  }`}
+                  onClick={() => setSelectedSize('46mm')}
+                >
+                  46mm
+                </button>
               </div>
             </div>
-          </section>
+
+            {/* Material Selection */}
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-2">Select Material</h3>
+              <div className="flex space-x-4">
+                <button
+                  className={`p-3 rounded-lg border-2 ${
+                    selectedMaterial === 'Aluminum' ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                  }`}
+                  onClick={() => setSelectedMaterial('Aluminum')}
+                >
+                  Aluminum
+                </button>
+                <button
+                  className={`p-3 rounded-lg border-2 ${
+                    selectedMaterial === 'Titanium' ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                  }`}
+                  onClick={() => setSelectedMaterial('Titanium')}
+                >
+                  Titanium
+                </button>
+              </div>
+            </div>
+
+            {/* Band Selection */}
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-2">Select Band</h3>
+              <div className="flex space-x-4">
+                <button
+                  className={`p-3 rounded-lg border-2 ${
+                    selectedBand === 'Sport Band' ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                  }`}
+                  onClick={() => setSelectedBand('Sport Band')}
+                >
+                  Sport Band
+                </button>
+                <button
+                  className={`p-3 rounded-lg border-2 ${
+                    selectedBand === 'Braided Solo Loop' ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                  }`}
+                  onClick={() => setSelectedBand('Braided Solo Loop')}
+                >
+                  Braided Solo Loop
+                </button>
+                <button
+                  className={`p-3 rounded-lg border-2 ${
+                    selectedBand === 'Sport Loop' ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                  }`}
+                  onClick={() => setSelectedBand('Sport Loop')}
+                >
+                  Sport Loop
+                </button>
+                <button
+                  className={`p-3 rounded-lg border-2 ${
+                    selectedBand === 'Nike Sport Loop' ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                  }`}
+                  onClick={() => setSelectedBand('Nike Sport Loop')}
+                >
+                  Nike Sport Loop
+                </button>
+              </div>
+            </div>
+
+            {/* Color Selection */}
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-2">Select Color</h3>
+              <div className="flex space-x-4">
+                <button
+                  className={`p-3 rounded-lg border-2 ${
+                    selectedColor === 'Black' ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                  }`}
+                  onClick={() => setSelectedColor('Black')}
+                >
+                  Black
+                </button>
+                <button
+                  className={`p-3 rounded-lg border-2 ${
+                    selectedColor === 'Gray' ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                  }`}
+                  onClick={() => setSelectedColor('Gray')}
+                >
+                  Gray
+                </button>
+                <button
+                  className={`p-3 rounded-lg border-2 ${
+                    selectedColor === 'Red' ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                  }`}
+                  onClick={() => setSelectedColor('Red')}
+                >
+                  Red
+                </button>
+                <button
+                  className={`p-3 rounded-lg border-2 ${
+                    selectedColor === 'Green' ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                  }`}
+                  onClick={() => setSelectedColor('Green')}
+                >
+                  Green
+                </button>
+              </div>
+            </div>
+
+            {/* Case Selection */}
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-2">Select Case</h3>
+              <div className="flex space-x-4">
+                {cases.map((caseOption) => (
+                  <button
+                    key={caseOption.id}
+                    className={`p-3 rounded-lg border-2 ${
+                      selectedCase?.id === caseOption.id
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-gray-100'
+                    }`}
+                    onClick={() => setSelectedCase(caseOption)}
+                  >
+                    {caseOption.name} - ${caseOption.price}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Checkout Section */}
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold mb-2">Add to Cart</h3>
+              <button className="w-full p-4 bg-blue-500 text-white rounded-lg font-semibold">
+                Add to Cart
+              </button>
+            </div>
+          </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };
 
-export default Customization;
+export default CustomizationPage;

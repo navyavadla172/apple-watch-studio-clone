@@ -1,13 +1,12 @@
 [
-    {
-      "id": 1,
-      "name": "Case 1",
-      "price": 299
-    },
-    {
-      "id": 2,
-      "name": "Case 2",
-      "price": 399
-    }
-  ]
-  
+  {
+    "id": 1,
+    "name": "Aluminum Case",
+    "price": 299
+  },
+  {
+    "id": 2,
+    "name": "Titanium Case",
+    "price": 399
+  }
+]
