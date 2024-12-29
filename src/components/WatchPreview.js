@@ -1,9 +1,20 @@
-const WatchPreview = ({ selectedSize, selectedBand, selectedCase }) => {
-  const imageSrc = `/images/${selectedSize}/${selectedCase}/${selectedBand}/watch-${selectedSize}-${selectedCase}-${selectedBand}.png`;
-  
+import React from 'react';
+import { useSpring, animated } from 'react-spring';
+
+const WatchPreview = ({ selectedSize, selectedCase, selectedBand, selectedFace }) => {
+  const imagePath = `/images/${selectedSize}-${selectedCase}-${selectedBand}-${selectedFace}.png`;
+
+  // Animation to fade in the image
+  const fade = useSpring({ opacity: 1, from: { opacity: 0 }, config: { duration: 500 } });
+
   return (
     <div className="watch-preview">
-      <img src={imageSrc} alt="Selected Watch" />
+      <h2>Watch Preview</h2>
+      <div className="watch-image">
+        <animated.img src={imagePath} alt="Watch Preview" style={fade} />
+      </div>
     </div>
   );
 };
+
+export default WatchPreview;

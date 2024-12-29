@@ -1,24 +1,19 @@
-// components/SizeSelection.js
 import React from 'react';
 
-const SizeSelection = ({ selectedSize, setSelectedSize }) => {
+const SizeSelection = ({ sizes, onSizeSelect }) => {
+  if (!sizes || sizes.length === 0) return <div>No sizes available</div>; // Avoid empty map()
+
   return (
-    <div>
-      <h3 className="text-lg font-semibold">Select Size</h3>
-      <div className="flex space-x-4 mt-2">
-        <button
-          onClick={() => setSelectedSize('42mm')}
-          className={`p-4 rounded-md border ${selectedSize === '42mm' ? 'border-blue-500' : 'border-gray-300'}`}
+    <div className="size-selection">
+      {sizes.map((size, index) => (
+        <div
+          key={index}
+          className="size-option"
+          onClick={() => onSizeSelect(size)}
         >
-          42mm
-        </button>
-        <button
-          onClick={() => setSelectedSize('46mm')}
-          className={`p-4 rounded-md border ${selectedSize === '46mm' ? 'border-blue-500' : 'border-gray-300'}`}
-        >
-          46mm
-        </button>
-      </div>
+          <p>{size}</p>
+        </div>
+      ))}
     </div>
   );
 };
