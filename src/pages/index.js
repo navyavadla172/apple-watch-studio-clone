@@ -1,5 +1,3 @@
-// pages/index.js
-
 import React, { useState } from 'react';
 import SizeSelection from '../components/SizeSelection';
 import BandSelection from '../components/BandSelection';
@@ -10,7 +8,6 @@ const IndexPage = () => {
   const [selectedSize, setSelectedSize] = useState('42mm');
   const [selectedBand, setSelectedBand] = useState('Sport Band');
   const [selectedCase, setSelectedCase] = useState('Aluminum');
-  const [selectedFace, setSelectedFace] = useState('Black'); // Not used yet in preview
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
