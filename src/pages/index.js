@@ -13,6 +13,13 @@ const IndexPage = () => {
   const [selectedCase, setSelectedCase] = useState('Aluminum');  // Default value set to Aluminum case
   const [selectedFace, setSelectedFace] = useState('Black');  // Default value set to Black watch face
 
+  const watchFaces = [
+    { name: 'Black', value: 'black' },
+    { name: 'White', value: 'white' },
+    { name: 'Blue', value: 'blue' },
+    // Add more faces as needed
+  ];
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
       <h1 className="text-2xl font-semibold text-center">Welcome to Apple Watch Studio</h1>
@@ -21,7 +28,11 @@ const IndexPage = () => {
         <SizeSelection setSelectedSize={setSelectedSize} selectedSize={selectedSize} />
         <BandSelection setSelectedBand={setSelectedBand} selectedBand={selectedBand} />
         <CaseSelection setSelectedCase={setSelectedCase} selectedCase={selectedCase} />
-        <WatchFaceSelection setSelectedFace={setSelectedFace} selectedFace={selectedFace} />
+        <WatchFaceSelection
+          watchFaces={watchFaces}  // Pass the watchFaces prop
+          setSelectedFace={setSelectedFace}
+          selectedFace={selectedFace}
+        />
       </div>
 
       <div className="mt-6">
