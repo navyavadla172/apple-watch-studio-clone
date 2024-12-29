@@ -1,6 +1,6 @@
 // pages/customization.js
 import { useState } from 'react';
-import cases from '../cases.json';  // Import the case data from the cases.json file
+import cases from '../../cases.json';  // Import the case data from the cases.json file
 
 const CustomizationPage = () => {
   const [selectedCase, setSelectedCase] = useState(null);

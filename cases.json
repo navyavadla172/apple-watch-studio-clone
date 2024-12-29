@@ -1,12 +1,14 @@
 [
   {
     "id": 1,
-    "name": "Aluminum Case",
-    "price": 299
+    "size": "42mm",
+    "material": "Aluminum",
+    "band": "Sport Loop"
   },
   {
     "id": 2,
-    "name": "Titanium Case",
-    "price": 399
+    "size": "46mm",
+    "material": "Titanium",
+    "band": "Stainless Steel"
   }
 ]
