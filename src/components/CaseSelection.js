@@ -1,22 +1,13 @@
 import React from 'react';
 
-const CaseSelection = ({ cases, onCaseSelect }) => {
-  if (!cases || cases.length === 0) return <div>No cases available</div>;
-
-  return (
-    <div className="case-selection">
-      {cases.map((caseType, index) => (
-        <div
-          key={index}
-          className="case-option"
-          onClick={() => onCaseSelect(caseType)}
-        >
-          <img src={caseType.image} alt={caseType.name} />
-          <p>{caseType.name}</p>
+const CaseSelection = ({ onCaseChange }) => {
+    return (
+        <div className="case-selection">
+            <h2>Select Case Material</h2>
+            <button onClick={() => onCaseChange('Aluminum')}>Aluminum</button>
+            <button onClick={() => onCaseChange('Titanium')}>Titanium</button>
         </div>
-      ))}
-    </div>
-  );
+    );
 };
 
 export default CaseSelection;

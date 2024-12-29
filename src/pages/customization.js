@@ -1,29 +1,38 @@
 import React, { useState } from 'react';
-import BandSelection from '../components/BandSelection';
 import SizeSelection from '../components/SizeSelection';
 import CaseSelection from '../components/CaseSelection';
+import BandSelection from '../components/BandSelection';
 import WatchPreview from '../components/WatchPreview';
+import WatchFaceSelection from '../components/WatchFaceSelection';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import CollectionSelection from '../components/CollectionSelection';
 
 const CustomizationPage = () => {
-  const [selectedBand, setSelectedBand] = useState('Sport Band');
-  const [selectedSize, setSelectedSize] = useState(42);
-  const [selectedCase, setSelectedCase] = useState('Aluminum');
+    const [size, setSize] = useState('42mm');
+    const [caseType, setCaseType] = useState('Aluminum');
+    const [band, setBand] = useState('Sport Band');
+    const [watchFace, setWatchFace] = useState('Classic');
 
-  const bands = ['Sport Band', 'Sport Loop', 'FineWoven'];
-  const sizes = [42, 46];
-  const cases = ['Aluminum', 'Titanium', 'Stainless Steel'];
+    const imagePaths = {
+        'Sport Band': 'watch-42mm-Aluminum-Sport Band-Black-front.png',
+        'Sport Loop': 'watch-42mm-Aluminum-Sport Loop-Red-front.png',
+        'Stainless Steel': 'watch-42mm-Aluminum-Stainless Steel-Silver-front.png',
+        // Add more mappings for the band options
+    };
 
-  return (
-    <div className="customization-page">
-      <h1>Customize Your Watch</h1>
-      <div className="selectors">
-        <SizeSelection sizes={sizes} selectedSize={selectedSize} setSelectedSize={setSelectedSize} />
-        <CaseSelection cases={cases} selectedCase={selectedCase} setSelectedCase={setSelectedCase} />
-        <BandSelection bands={bands} selectedBand={selectedBand} setSelectedBand={setSelectedBand} />
-      </div>
-      <WatchPreview selectedSize={selectedSize} selectedBand={selectedBand} selectedCase={selectedCase} />
-    </div>
-  );
+    return (
+        <div>
+            <Header />
+            <SizeSelection onSizeChange={setSize} />
+            <CaseSelection onCaseChange={setCaseType} />
+            <BandSelection onBandChange={setBand} />
+            <WatchFaceSelection onFaceChange={setWatchFace} />
+            <CollectionSelection onCollectionChange={() => {}} />
+            <WatchPreview size={size} caseType={caseType} band={band} imagePaths={imagePaths} />
+            <Footer />
+        </div>
+    );
 };
 
 export default CustomizationPage;

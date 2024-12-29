@@ -1,22 +1,8 @@
-import "../styles/tailwind.css";
-import { useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import React from 'react';
+import '../styles/tailwind.css';
 
-export default function App({ Component, pageProps }) {
-  const [selectedWatch, setSelectedWatch] = useState({
-    size: "42mm",
-    material: "Aluminum",
-    band: "Sport Band",
-    bandColor: "Black",
-    watchFace: "Modular",
-  });
-
-  return (
-    <div className="bg-gray-50">
-      <Header />
-      <Component {...pageProps} selectedWatch={selectedWatch} setSelectedWatch={setSelectedWatch} />
-      <Footer />
-    </div>
-  );
+function MyApp({ Component, pageProps }) {
+    return <Component {...pageProps} />;
 }
+
+export default MyApp;

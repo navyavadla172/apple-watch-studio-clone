@@ -1,21 +1,13 @@
 import React from 'react';
 
-const SizeSelection = ({ sizes, onSizeSelect }) => {
-  if (!sizes || sizes.length === 0) return <div>No sizes available</div>; // Avoid empty map()
-
-  return (
-    <div className="size-selection">
-      {sizes.map((size, index) => (
-        <div
-          key={index}
-          className="size-option"
-          onClick={() => onSizeSelect(size)}
-        >
-          <p>{size}</p>
+const SizeSelection = ({ onSizeChange }) => {
+    return (
+        <div className="size-selection">
+            <h2>Select Watch Size</h2>
+            <button onClick={() => onSizeChange('42mm')}>42mm</button>
+            <button onClick={() => onSizeChange('46mm')}>46mm</button>
         </div>
-      ))}
-    </div>
-  );
+    );
 };
 
 export default SizeSelection;

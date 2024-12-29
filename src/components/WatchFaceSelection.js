@@ -1,22 +1,14 @@
 import React from 'react';
 
-const WatchFaceSelection = ({ faces, onFaceSelect }) => {
-  if (!faces || faces.length === 0) return <div>No watch faces available</div>;
-
-  return (
-    <div className="watch-face-selection">
-      {faces.map((face, index) => (
-        <div
-          key={index}
-          className="watch-face-option"
-          onClick={() => onFaceSelect(face)}
-        >
-          <img src={face.image} alt={face.name} />
-          <p>{face.name}</p>
+const WatchFaceSelection = ({ onFaceChange }) => {
+    return (
+        <div className="watch-face-selection">
+            <h2>Select Watch Face</h2>
+            <button onClick={() => onFaceChange('Classic')}>Classic</button>
+            <button onClick={() => onFaceChange('Modern')}>Modern</button>
+            <button onClick={() => onFaceChange('Sport')}>Sport</button>
         </div>
-      ))}
-    </div>
-  );
+    );
 };
 
 export default WatchFaceSelection;
