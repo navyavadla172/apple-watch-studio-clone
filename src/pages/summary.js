@@ -14,7 +14,7 @@ const SummaryPage = () => {
       </div>
 
       <div className="text-center">
-        <Link href="/checkout">
+        <Link href="/checkout" passHref>
           <a className="bg-green-500 text-white py-3 px-8 rounded-lg text-lg hover:bg-green-400 transition">
             Proceed to Checkout
           </a>
