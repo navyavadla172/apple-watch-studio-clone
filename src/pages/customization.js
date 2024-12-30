@@ -26,74 +26,91 @@ const Customization = () => {
   };
 
   return (
-    <div className="customization-container">
-      <div className="watch-preview">
-        <h2>Preview</h2>
-        <div className="image-wrapper">
+    <div className="customization-container mx-auto px-6 py-12 max-w-5xl">
+      <div className="watch-preview mb-10">
+        <h2 className="text-3xl font-semibold text-center mb-4">Apple Watch Preview</h2>
+        <div className="image-wrapper flex justify-center">
           <img
             src={getImagePath()}
             alt="Apple Watch Preview"
+            className="watch-image transition-transform duration-500 hover:scale-110"
             width={300}
             height={300}
           />
         </div>
       </div>
 
-      <div className="options">
+      <div className="options space-y-12">
         {/* Select Size */}
         <div className="size-selection">
-          <h3>Select Size</h3>
-          {sizes.map((size) => (
-            <button
-              key={size}
-              className={selectedSize === size ? 'selected' : ''}
-              onClick={() => setSelectedSize(size)}
-            >
-              {size}
-            </button>
-          ))}
+          <h3 className="text-2xl font-semibold">Select Size</h3>
+          <div className="grid grid-cols-2 gap-4">
+            {sizes.map((size) => (
+              <button
+                key={size}
+                className={`${
+                  selectedSize === size ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                } py-2 px-4 rounded-lg transition duration-200 hover:bg-blue-400 focus:outline-none`}
+                onClick={() => setSelectedSize(size)}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Select Case */}
         <div className="case-selection">
-          <h3>Select Case</h3>
-          {cases.map((caseType) => (
-            <button
-              key={caseType}
-              className={selectedCase === caseType ? 'selected' : ''}
-              onClick={() => setSelectedCase(caseType)}
-            >
-              {caseType}
-            </button>
-          ))}
+          <h3 className="text-2xl font-semibold">Select Case</h3>
+          <div className="grid grid-cols-2 gap-4">
+            {cases.map((caseType) => (
+              <button
+                key={caseType}
+                className={`${
+                  selectedCase === caseType ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                } py-2 px-4 rounded-lg transition duration-200 hover:bg-blue-400 focus:outline-none`}
+                onClick={() => setSelectedCase(caseType)}
+              >
+                {caseType}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Select Band */}
         <div className="band-selection">
-          <h3>Select Band</h3>
-          {bands.map((band) => (
-            <button
-              key={band}
-              className={selectedBand === band ? 'selected' : ''}
-              onClick={() => setSelectedBand(band)}
-            >
-              {band}
-            </button>
-          ))}
+          <h3 className="text-2xl font-semibold">Select Band</h3>
+          <div className="grid grid-cols-2 gap-4">
+            {bands.map((band) => (
+              <button
+                key={band}
+                className={`${
+                  selectedBand === band ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                } py-2 px-4 rounded-lg transition duration-200 hover:bg-blue-400 focus:outline-none`}
+                onClick={() => setSelectedBand(band)}
+              >
+                {band}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Select Color */}
         <div className="color-selection">
-          <h3>Select Color</h3>
-          {colors.map((color) => (
-            <button
-              key={color}
-              className={selectedColor === color ? 'selected' : ''}
-              onClick={() => setSelectedColor(color)}
-            >
-              {color}
-            </button>
-          ))}
+          <h3 className="text-2xl font-semibold">Select Color</h3>
+          <div className="grid grid-cols-2 gap-4">
+            {colors.map((color) => (
+              <button
+                key={color}
+                className={`${
+                  selectedColor === color ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                } py-2 px-4 rounded-lg transition duration-200 hover:bg-blue-400 focus:outline-none`}
+                onClick={() => setSelectedColor(color)}
+              >
+                {color}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Select Collection */}
