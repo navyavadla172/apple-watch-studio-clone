@@ -98,4 +98,4 @@ const Customization = () => {
   );
 };
 
-export default CustomizationPage;
+export default Customization;
