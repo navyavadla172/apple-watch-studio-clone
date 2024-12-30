@@ -1,19 +1,30 @@
-import React from 'react';
+import React from "react";
 
-const SizeSelection = ({ sizes, selectedSize, onSelectSize }) => {
+const SizeSelection = ({ selectedSize, onSizeChange }) => {
   return (
     <div className="size-selection">
-      <h3>Select Size</h3>
-      <div className="size-options">
-        {sizes.map((size) => (
-          <button
-            key={size}
-            onClick={() => onSelectSize(size)}
-            className={`size-item ${selectedSize === size ? 'selected' : ''}`}
-          >
-            {size} mm
-          </button>
-        ))}
+      <h2 className="text-xl font-semibold mb-4">Select Your Size</h2>
+      <div className="flex space-x-6 mt-4 justify-center">
+        <button
+          onClick={() => onSizeChange("42mm")}
+          className={`${
+            selectedSize === "42mm"
+              ? "bg-blue-500 text-white border-blue-500"
+              : "bg-gray-300 text-black"
+          } px-6 py-3 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105`}
+        >
+          42mm
+        </button>
+        <button
+          onClick={() => onSizeChange("46mm")}
+          className={`${
+            selectedSize === "46mm"
+              ? "bg-blue-500 text-white border-blue-500"
+              : "bg-gray-300 text-black"
+          } px-6 py-3 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105`}
+        >
+          46mm
+        </button>
       </div>
     </div>
   );

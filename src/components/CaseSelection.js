@@ -1,18 +1,18 @@
+// components/CaseSelection.js
+
 import React from 'react';
 
-const CaseSelection = ({ cases, selectedCase, onSelectCase }) => {
+const CaseSelection = ({ onSelectCase }) => {
+  const cases = ["Aluminum", "Titanium"];
+
   return (
     <div className="case-selection">
-      <h3>Select Case</h3>
+      <h2>Choose your Case</h2>
       <div className="case-options">
-        {cases.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => onSelectCase(item)}
-            className={`case-item ${selectedCase === item ? 'selected' : ''}`}
-          >
-            <img src={item.imageUrl} alt={item.name} />
-          </button>
+        {cases.map((caseType) => (
+          <div key={caseType} className="case-option" onClick={() => onSelectCase(caseType)}>
+            <p>{caseType}</p>
+          </div>
         ))}
       </div>
     </div>

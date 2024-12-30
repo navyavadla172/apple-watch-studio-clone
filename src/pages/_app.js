@@ -1,18 +1,7 @@
-import React from 'react';
-import '../styles/globals.css';
+import '../styles/globals.css';  // Import global CSS
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      <header>
-        <h1>Apple Watch Studio Clone</h1>
-      </header>
-      <Component {...pageProps} />
-      <footer>
-        <p>Made with ❤️ for learning purposes</p>
-      </footer>
-    </>
-  );
+  return <Component {...pageProps} />;  // Render the current page component with its props
 }
 
 export default MyApp;

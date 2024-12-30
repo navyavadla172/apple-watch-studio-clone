@@ -1,54 +1,35 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import BandSelection from '../components/BandSelection';
-import CaseSelection from '../components/CaseSelection';
+import WatchPreview from '../components/WatchPreview'; // Import the WatchPreview component
 import SizeSelection from '../components/SizeSelection';
-import WatchPreview from '../components/WatchPreview';
-import CollectionSelection from '../components/CollectionSelection';
+import CaseSelection from '../components/CaseSelection';
+import BandSelection from '../components/BandSelection';
 import WatchFaceSelection from '../components/WatchFaceSelection';
 
 const WatchStudioPage = () => {
-  const [selectedBand, setSelectedBand] = useState(null);
-  const [selectedCase, setSelectedCase] = useState(null);
-  const [selectedSize, setSelectedSize] = useState(42); // Default size is 42mm
-  const [selectedCollection, setSelectedCollection] = useState(null);
-  const [selectedWatchFace, setSelectedWatchFace] = useState(null);
+  const [selectedSize, setSelectedSize] = useState('42mm');
+  const [selectedCase, setSelectedCase] = useState('Aluminum');
+  const [selectedBand, setSelectedBand] = useState('Sport Loop');
+  const [selectedWatchFace, setSelectedWatchFace] = useState('Analog'); // Initial watch face
 
-  const bands = [
-    { id: '1', name: 'Sport Loop', imageUrl: '/images/band-sport-loop.png' },
-    { id: '2', name: 'Nike Sport Loop', imageUrl: '/images/band-nike-sport-loop.png' },
-  ];
-
-  const cases = [
-    { id: '1', name: 'Aluminum', imageUrl: '/images/case-aluminum.png' },
-    { id: '2', name: 'Titanium', imageUrl: '/images/case-titanium.png' },
-  ];
-
-  const sizes = [42, 46];
-
-  const collections = [
-    { id: '1', name: 'Nike Edition', imageUrl: '/images/collection-nike.png' },
-    { id: '2', name: 'Standard Edition', imageUrl: '/images/collection-standard.png' },
-  ];
-
-  const watchFaces = [
-    { id: '1', name: 'Classic', imageUrl: '/images/face-classic.png' },
-    { id: '2', name: 'Modern', imageUrl: '/images/face-modern.png' },
-  ];
+  // Handle the state changes for selections
+  const handleSizeChange = (size) => setSelectedSize(size);
+  const handleCaseChange = (caseType) => setSelectedCase(caseType);
+  const handleBandChange = (band) => setSelectedBand(band);
+  const handleWatchFaceChange = (watchFace) => setSelectedWatchFace(watchFace);
 
   return (
-    <div className="watch-studio">
-      <Header />
-      <div className="customization">
-        <SizeSelection sizes={sizes} selectedSize={selectedSize} onSelectSize={setSelectedSize} />
-        <CaseSelection cases={cases} selectedCase={selectedCase} onSelectCase={setSelectedCase} />
-        <BandSelection bands={bands} selectedBand={selectedBand} onSelectBand={setSelectedBand} />
-        <CollectionSelection collections={collections} selectedCollection={selectedCollection} onSelectCollection={setSelectedCollection} />
-        <WatchFaceSelection watchFaces={watchFaces} selectedWatchFace={selectedWatchFace} onSelectWatchFace={setSelectedWatchFace} />
-        <WatchPreview selectedBand={selectedBand?.name} selectedCase={selectedCase?.name} selectedSize={selectedSize} />
+    <div className="watch-studio p-6">
+      <h1 className="text-3xl font-bold mb-6">Apple Watch Studio Clone</h1>
+      <p className="mb-4 text-lg">Here's your watch preview with all the selected options!</p>
+
+      <div className="selection-container mb-8">
+        <SizeSelection selectedSize={selectedSize} onSizeChange={handleSizeChange} />
+        <CaseSelection onSelectCase={handleCaseChange} />
+        <BandSelection onSelectBand={handleBandChange} />
+        <WatchFaceSelection onSelectWatchFace={handleWatchFaceChange} />
       </div>
-      <Footer />
+
+      <WatchPreview selectedSize={selectedSize} selectedMaterial={selectedCase} selectedBand={selectedBand} />
     </div>
   );
 };

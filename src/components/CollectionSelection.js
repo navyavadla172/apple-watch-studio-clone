@@ -1,18 +1,22 @@
+// components/CollectionSelection.js
+
 import React from 'react';
 
-const CollectionSelection = ({ collections, selectedCollection, onSelectCollection }) => {
+const CollectionSelection = ({ selectedCollection, onSelectCollection }) => {
+  const collections = ["Watch Series", "Watch Ultra", "Watch SE"];
+
   return (
     <div className="collection-selection">
-      <h3>Select Collection</h3>
+      <h2>Choose your Collection</h2>
       <div className="collection-options">
         {collections.map((collection) => (
-          <button
-            key={collection.id}
+          <div
+            key={collection}
+            className={`collection-option ${selectedCollection === collection ? 'selected' : ''}`}
             onClick={() => onSelectCollection(collection)}
-            className={`collection-item ${selectedCollection === collection ? 'selected' : ''}`}
           >
-            <img src={collection.imageUrl} alt={collection.name} />
-          </button>
+            <p>{collection}</p>
+          </div>
         ))}
       </div>
     </div>
