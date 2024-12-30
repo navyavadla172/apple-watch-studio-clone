@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CollectionSelection from './components/CollectionSelection'; // Import CollectionSelection component
+import CollectionSelection from '../components/CollectionSelection'; // Import CollectionSelection component
 
 const Customization = () => {
   const [selectedSize, setSelectedSize] = useState('42mm');
